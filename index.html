@@ -1,199 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonatan Ortega — Apps</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev-licius | Nuestras apps</title>
+<meta name="description" content="Las apps de Dev-licius para Android e iOS: EcoKids, MimoPet, CuandoLeToca, CuandoMeToca, CuandoTeToca, GymQuest, Survival Workout y Bionic Reader.">
+<meta name="theme-color" content="#FFE9EE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='17' fill='%23FF5C80' stroke='%233B1D12' stroke-width='3'/%3E%3Ccircle cx='20' cy='20' r='6' fill='%23FFF8F4' stroke='%233B1D12' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Schibsted+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<style>
+/* Misma identidad que devlicius.com: helado napolitano */
+:root{
+  --fresa-claro:#FFE9EE; --fresa:#FF5C80; --pistacho:#A9D46F; --vainilla:#FFDF85;
+  --choco:#3B1D12; --nata:#FFF8F4; --wa:#25D366;
+  --font-display:"Bagel Fat One","Arial Rounded MT Bold",system-ui,sans-serif;
+  --font-body:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --spring:cubic-bezier(.34,1.56,.64,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--fresa-claro);color:var(--choco);font:400 1.125rem/1.55 var(--font-body);-webkit-font-smoothing:antialiased}
+main{flex:1}
+h1,h2{font-family:var(--font-display);font-weight:400;line-height:.95;margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--choco);outline-offset:3px;border-radius:8px}
+.dark :focus-visible{outline-color:var(--vainilla)}
+.wrap{width:min(1100px,100% - 2*clamp(1rem,4vw,2.5rem));margin-inline:auto}
 
-    html, body {
-      height: 100%;
-    }
+/* Cabecera */
+.nav{display:flex;align-items:center;gap:.75rem;margin-top:12px;padding:8px 8px 8px 16px;border:2px solid var(--choco);border-radius:999px;background:var(--nata)}
+.brand{display:flex;align-items:center;gap:.5rem;margin-right:auto;font-family:var(--font-display);font-size:1.45rem;text-decoration:none}
+.brand svg{width:34px;height:34px;transition:rotate .6s var(--spring)}
+.brand:hover svg{rotate:200deg}
+.lang{display:flex;padding:3px;border:2px solid var(--choco);border-radius:999px}
+.lang button{border:0;background:none;color:inherit;font:700 .85rem/1 var(--font-body);padding:.45rem .6rem;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--choco);color:var(--nata)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.3rem;border:2px solid var(--choco);border-radius:999px;background:var(--fresa);color:var(--choco);font:700 1rem/1 var(--font-body);text-decoration:none;box-shadow:0 5px 0 var(--sh,var(--choco));transition:translate .15s,box-shadow .15s}
+.btn:hover{translate:0 -2px;box-shadow:0 7px 0 var(--sh,var(--choco))}
+.btn:active{translate:0 5px;box-shadow:0 0 0 var(--sh,var(--choco))}
+.nav .btn{padding:.7rem 1.1rem;font-size:.95rem;box-shadow:none}
+.nav .btn:hover{translate:none;background:var(--vainilla)}
+@media (max-width:520px){.nav .btn{display:none}}
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #f7f5f2;
-      color: #2c2c2c;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+/* Hero: mantel de cuadros con una tarjeta encima */
+.hero{margin-top:1.25rem;padding:clamp(1.25rem,5vw,3.5rem);border:2px solid var(--choco);border-radius:40px;background:
+  repeating-linear-gradient(0deg,color-mix(in srgb,var(--fresa) 26%,transparent) 0 22px,transparent 22px 44px),
+  repeating-linear-gradient(90deg,color-mix(in srgb,var(--fresa) 26%,transparent) 0 22px,transparent 22px 44px),
+  var(--nata)}
+.hero-card{max-width:680px;padding:clamp(1.5rem,4vw,2.75rem);border:2px solid var(--choco);border-radius:32px;background:var(--nata);box-shadow:0 8px 0 var(--choco);rotate:-1.2deg;animation:serve .9s var(--spring) both}
+@keyframes serve{from{opacity:0;scale:.85;rotate:-8deg}}
+.hero h1{font-size:clamp(2.9rem,8vw,5.6rem);line-height:.9}
+.hero p{margin-top:1.1rem;max-width:44ch;font-size:clamp(1.1rem,1.6vw,1.3rem)}
 
-    .container {
-      flex: 1;
-    }
+/* Apps */
+.apps{padding-block:clamp(2.5rem,6vw,4rem) clamp(4rem,9vw,6rem)}
+.apps h2{font-size:clamp(2.2rem,5vw,3.5rem)}
+.apps > p{margin-top:.6rem;max-width:52ch}
+.grid{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+.grid li{animation:rise .7s var(--spring) both;animation-delay:calc(var(--i) * 60ms + 250ms)}
+@keyframes rise{from{opacity:0;translate:0 24px}}
+.app{display:flex;flex-direction:column;gap:.9rem;height:100%;padding:1.4rem;border:2px solid var(--choco);border-radius:28px;background:var(--nata);text-decoration:none;box-shadow:0 5px 0 var(--choco);transition:translate .2s,box-shadow .2s}
+.app:hover,.app:focus-visible{translate:0 -4px;box-shadow:0 9px 0 var(--choco)}
+.ico{display:grid;place-items:center;width:76px;aspect-ratio:1;font-size:2.2rem;background:var(--c);border:2px solid var(--choco);border-radius:62% 38% 46% 54% / 48% 58% 42% 52%;transition:border-radius .8s var(--spring),rotate .8s var(--spring)}
+.app:hover .ico{border-radius:42% 58% 60% 40% / 55% 45% 55% 45%;rotate:-8deg}
+.app strong{display:block;font-family:var(--font-display);font-weight:400;font-size:1.6rem;line-height:1.05}
+.app small{display:block;margin-top:.25rem;font-size:1rem;opacity:.8}
 
-    header {
-      background: #1e1e1e;
-      padding: 48px 32px 44px;
-      text-align: center;
-    }
+@media (max-width:560px){.app{flex-direction:row;align-items:center;padding:1rem 1.1rem}.ico{flex:none;width:60px;font-size:1.8rem}.app strong{font-size:1.4rem}}
 
-    header .wave {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
+/* Contacto y pie */
+.dark{background:var(--choco);color:var(--nata)}
+.cta{padding-block:clamp(3rem,7vw,5rem)}
+.cta .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem 3rem}
+.cta h2{font-size:clamp(2rem,4.5vw,3.25rem);max-width:16ch}
+.cta p{margin-top:.75rem;max-width:42ch}
+.cta-btns{display:flex;flex-wrap:wrap;gap:.9rem}
+.cta .btn{--sh:#000}
+.btn-wa{background:var(--wa)}
+.btn-alt{background:var(--nata)}
+footer{padding-bottom:2rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;padding-top:1.25rem;border-top:1px solid color-mix(in srgb,var(--nata) 18%,transparent);font-size:.95rem}
 
-    header h1 {
-      color: #fff;
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    header p {
-      color: #aaa;
-      font-size: 14px;
-      margin-top: 6px;
-    }
-
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 18px;
-    }
-
-    .app-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: #fff;
-      border-radius: 14px;
-      padding: 20px 22px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      border-left: 5px solid var(--accent);
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .app-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.10);
-    }
-
-    .app-icon {
-      font-size: 30px;
-      flex-shrink: 0;
-    }
-
-    .app-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: #1e1e1e;
-    }
-
-    .app-desc {
-      font-size: 13px;
-      color: #777;
-      margin-top: 2px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 12px;
-      color: #aaa;
-      background: #1e1e1e;
-    }
-
-    footer a {
-      color: #aaa;
-    }
-
-    @media (max-width: 600px) {
-      .container { padding: 28px 16px 60px; }
-      header { padding: 36px 20px 32px; }
-    }
-  </style>
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
 
-<header>
-  <div class="wave">👋</div>
-  <h1>Jonatan Ortega</h1>
-  <p>Apps sencillas para el día a día — para Android e iOS.</p>
+<header class="wrap">
+  <div class="nav">
+    <a class="brand" href="https://devlicius.com" aria-label="Dev-licius">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" fill="#FF5C80" stroke="#3B1D12" stroke-width="2.5"/>
+        <circle cx="20" cy="20" r="6" fill="#FFF8F4" stroke="#3B1D12" stroke-width="2.5"/>
+        <g stroke-linecap="round" stroke-width="2.6">
+          <path d="M11 13l2.2 2" stroke="#FFDF85"/><path d="M27 9.5l-1 3" stroke="#A9D46F"/>
+          <path d="M29 24l3 1" stroke="#FFF8F4"/><path d="M11 27l2.2-2" stroke="#A9D46F"/>
+          <path d="M19 31.5h3.2" stroke="#FFDF85"/>
+        </g>
+      </svg>
+      <span>Dev-licius</span>
+    </a>
+    <div class="lang" role="group" aria-label="Idioma" data-en-aria="Language">
+      <button type="button" data-lang="es" lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn" href="#contacto" data-en="Get in touch">Escríbenos</a>
+  </div>
 </header>
 
-<div class="container">
-  <div class="grid">
-
-    <a class="app-card" href="privacy-policies/ecokids/" style="--accent:#43a047">
-      <div class="app-icon">🐼</div>
-      <div>
-        <div class="app-name">EcoKids</div>
-        <div class="app-desc">Ecología para niños</div>
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <h1 data-en="Apps for everyday life.">Apps para el día a día.</h1>
+        <p data-en="We're Felipe and Jonathan, the two people behind Dev-licius. These are our apps for Android and iOS.">Somos Felipe y Jonathan, las dos personas que hay detrás de Dev-licius. Estas son nuestras apps para Android e iOS.</p>
       </div>
-    </a>
+    </section>
 
-    <a class="app-card" href="privacy-policies/mimopet.html" style="--accent:#f4a94e">
-      <div class="app-icon">🐾</div>
-      <div>
-        <div class="app-name">MimoPet</div>
-        <div class="app-desc">Cuidado de mascotas</div>
-      </div>
-    </a>
-
-    <a class="app-card" href="privacy-policies/cuandoletoca/" style="--accent:#d81b60">
-      <div class="app-icon">🍼</div>
-      <div>
-        <div class="app-name">CuandoLeToca</div>
-        <div class="app-desc">Cuidado del bebé</div>
-      </div>
-    </a>
-
-    <a class="app-card" href="privacy-policies/cuandometoca/" style="--accent:#2f6e5b">
-      <div class="app-icon">⏰</div>
-      <div>
-        <div class="app-name">CuandoMeToca</div>
-        <div class="app-desc">Medicación y citas médicas</div>
-      </div>
-    </a>
-
-    <a class="app-card" href="privacy-policies/cuandotetoca/" style="--accent:#7e57c2">
-      <div class="app-icon">🧸</div>
-      <div>
-        <div class="app-name">CuandoTeToca</div>
-        <div class="app-desc">Extraescolares en familia</div>
-      </div>
-    </a>
-
-    <a class="app-card" href="privacy-policies/gymquest.html" style="--accent:#3f51b5">
-      <div class="app-icon">🏋️</div>
-      <div>
-        <div class="app-name">GymQuest</div>
-        <div class="app-desc">Fitness RPG en casa</div>
-      </div>
-    </a>
-
-    <a class="app-card" href="privacy-policies/survivalworkout/" style="--accent:#e53935">
-      <div class="app-icon">💪</div>
-      <div>
-        <div class="app-name">Survival Workout</div>
-        <div class="app-desc">Juego de fitness para fiestas</div>
-      </div>
-    </a>
-
-    <a class="app-card" href="privacy-policies/bionicreader/" style="--accent:#1e88e5">
-      <div class="app-icon">📖</div>
-      <div>
-        <div class="app-name">Bionic Reader</div>
-        <div class="app-desc">Lectura biónica</div>
-      </div>
-    </a>
-
+    <section class="apps" aria-labelledby="apps-title">
+      <h2 id="apps-title" data-en="Our apps">Nuestras apps</h2>
+      <p data-en="Pick an app to open its page.">Elige una app para abrir su página.</p>
+      <ul class="grid">
+        <li style="--i:0"><a class="app" href="https://jona234.github.io/privacy-policies/ecokids/" style="--c:var(--pistacho)"><span class="ico" aria-hidden="true">🐼</span><span><strong>EcoKids</strong><small data-en="Ecology for kids">Ecología para niños</small></span></a></li>
+        <li style="--i:1"><a class="app" href="https://jona234.github.io/privacy-policies/mimopet.html" style="--c:var(--vainilla)"><span class="ico" aria-hidden="true">🐾</span><span><strong>MimoPet</strong><small data-en="Pet care">Cuidado de mascotas</small></span></a></li>
+        <li style="--i:2"><a class="app" href="https://jona234.github.io/privacy-policies/cuandoletoca/" style="--c:var(--fresa)"><span class="ico" aria-hidden="true">🍼</span><span><strong>CuandoLeToca</strong><small data-en="Baby care">Cuidado del bebé</small></span></a></li>
+        <li style="--i:3"><a class="app" href="https://jona234.github.io/privacy-policies/cuandometoca/" style="--c:var(--pistacho)"><span class="ico" aria-hidden="true">⏰</span><span><strong>CuandoMeToca</strong><small data-en="Medication and medical appointments">Medicación y citas médicas</small></span></a></li>
+        <li style="--i:4"><a class="app" href="https://jona234.github.io/privacy-policies/cuandotetoca/" style="--c:var(--vainilla)"><span class="ico" aria-hidden="true">🧸</span><span><strong>CuandoTeToca</strong><small data-en="After-school activities for the family">Extraescolares en familia</small></span></a></li>
+        <li style="--i:5"><a class="app" href="https://jona234.github.io/privacy-policies/gymquest.html" style="--c:var(--fresa)"><span class="ico" aria-hidden="true">🏋️</span><span><strong>GymQuest</strong><small data-en="Fitness RPG at home">Fitness RPG en casa</small></span></a></li>
+        <li style="--i:6"><a class="app" href="https://jona234.github.io/privacy-policies/survivalworkout/" style="--c:var(--pistacho)"><span class="ico" aria-hidden="true">💪</span><span><strong>Survival Workout</strong><small data-en="Fitness party game">Juego de fitness para fiestas</small></span></a></li>
+        <li style="--i:7"><a class="app" href="https://jona234.github.io/privacy-policies/bionicreader/" style="--c:var(--vainilla)"><span class="ico" aria-hidden="true">📖</span><span><strong>Bionic Reader</strong><small data-en="Bionic reading">Lectura biónica</small></span></a></li>
+      </ul>
+    </section>
   </div>
-</div>
 
-<footer>© 2026 Jonatan Ortega González · España · <a href="mailto:devlicius.online@gmail.com">devlicius.online@gmail.com</a></footer>
+  <section class="cta dark" id="contacto">
+    <div class="wrap">
+      <div>
+        <h2 data-en="Need an app or a website?">¿Quieres una app o una web?</h2>
+        <p data-en="We also build websites, apps and social media content for businesses.">También hacemos webs, apps y contenido para redes para negocios.</p>
+      </div>
+      <div class="cta-btns">
+        <a class="btn btn-wa" href="https://wa.me/34657231980" target="_blank" rel="noopener" data-en="Chat on WhatsApp">Escríbenos por WhatsApp</a>
+        <a class="btn btn-alt" href="https://devlicius.com" data-en="Visit devlicius.com">Ver devlicius.com</a>
+      </div>
+    </div>
+  </section>
+</main>
 
+<footer class="dark">
+  <div class="wrap">
+    <p data-en="© 2026 Dev-licius. Felipe López Escarpa and Jonathan Ortega González, Spain.">© 2026 Dev-licius. Felipe López Escarpa y Jonathan Ortega González, España.</p>
+    <a href="mailto:devlicius.online@gmail.com">devlicius.online@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+// Idioma: el español está en el HTML y el inglés en los atributos data-en
+const KEY = 'devlicius-lang';
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.dataset.es ??= el.textContent;
+    el.textContent = lang === 'en' ? el.dataset.en : el.dataset.es;
+  });
+  document.querySelectorAll('[data-en-aria]').forEach(el => {
+    el.dataset.esAria ??= el.getAttribute('aria-label');
+    el.setAttribute('aria-label', lang === 'en' ? el.dataset.enAria : el.dataset.esAria);
+  });
+  document.title = lang === 'en' ? 'Dev-licius | Our apps' : 'Dev-licius | Nuestras apps';
+  document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => {
+  setLang(b.dataset.lang);
+  try { localStorage.setItem(KEY, b.dataset.lang); } catch {}
+}));
+let saved = null;
+try { saved = localStorage.getItem(KEY); } catch {}
+setLang(saved || ((navigator.languages || [navigator.language]).some(l => /^(es|ca|eu|gl)\b/i.test(l)) ? 'es' : 'en'));
+</script>
 </body>
 </html>
