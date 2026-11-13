@@ -145,8 +145,9 @@ footer p + p{margin-top:6px}
         <a class="boton" data-whatsapp href="#contacto">Pedir mi muestra gratis por WhatsApp</a>
       </div>
       <figure class="comparador">
-        <img class="antes" src="img/antes.jpg" alt="Foto original de un negocio" onerror="this.closest('.comparador').classList.add('vacio')">
-        <img class="despues" src="img/despues.jpg" alt="La misma foto con decoración navideña" onerror="this.closest('.comparador').classList.add('vacio')">
+        <!-- Rutas absolutas: la página también se sirve en devlicius.com/christmas, donde las relativas se rompen -->
+        <img class="antes" src="https://jona234.github.io/pack-navidad/img/antes.jpg" alt="Foto original de un negocio" onerror="this.closest('.comparador').classList.add('vacio')">
+        <img class="despues" src="https://jona234.github.io/pack-navidad/img/despues.jpg" alt="La misma foto con decoración navideña" onerror="this.closest('.comparador').classList.add('vacio')">
         <span class="marca-foto marca-despues">Después</span>
         <span class="marca-foto marca-antes">Antes</span>
         <span class="tirador" aria-hidden="true">↔</span>
